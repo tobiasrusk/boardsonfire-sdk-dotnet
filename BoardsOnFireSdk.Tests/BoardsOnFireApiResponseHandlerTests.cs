@@ -1,6 +1,7 @@
 ﻿using BoardsOnFireSdk.Exceptions;
 using BoardsOnFireSdk.Resources;
 using BoardsOnFireSdk.Resources.Users;
+using BoardsOnFireSdk.Serialization;
 using System.Net;
 using System.Text.Json;
 
@@ -39,7 +40,7 @@ public class BoardsOnFireApiResponseHandlerTests
             ExternalId = "Test",
             Type = Enums.UserType.User
         };
-        var json = JsonSerializer.Serialize(user);
+        var json = JsonSerializer.Serialize(user, DefaultJsonSerializerOptions.Instance);
 
         var content = new StringContent(json);
         var httpResponse = new HttpResponseMessage
