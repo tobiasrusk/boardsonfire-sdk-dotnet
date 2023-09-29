@@ -1,3 +1,5 @@
+[![GitHub release](https://img.shields.io/github/release/tobiasrusk/boardsonfire-sdk-dotnet.svg)]() [![nuget](https://img.shields.io/nuget/v/BoardsOnFireSdk.svg)](https://www.nuget.org/packages/BoardsOnFireSdk/) [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+
 # Boards on Fire SDK for .NET
 Boards on Fire SDK is an asynchronous SDK for easily accessing and develop towards Boards on Fire API.
 
