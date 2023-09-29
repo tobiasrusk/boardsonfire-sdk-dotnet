@@ -63,3 +63,6 @@ Console.WriteLine($"Fetched organizations count: {organizations.Count}");
 ```
 
 It is also possible to use its own HttpClient, to be able to configure it as you want.
+
+## License
+[MIT](https://github.com/tobiasrusk/boardsonfire-sdk-dotnet/blob/main/LICENSE)
