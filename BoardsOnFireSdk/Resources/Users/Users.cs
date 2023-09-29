@@ -1,7 +1,7 @@
 ﻿using BoardsOnFireSdk.Enums;
 
 namespace BoardsOnFireSdk.Resources.Users;
-public class Users : BaseResource
+public class Users : BaseResource<UserDto>
 {
     public Users(HttpClient httpClient) : base(httpClient, nameof(Users).ToLower())
     {
@@ -12,6 +12,11 @@ public class Users : BaseResource
     {
         var queryParams = new ListQueryParams(pageSize, page, direction, order);
 
-        return await base.ListAsync<UserDto>(queryParams);
+        return await base.ListAsync(queryParams);
+    }
+
+    public override async Task<UserDto?> GetByIdAsync(Guid id)
+    {
+        return await base.GetByIdAsync(id);
     }
 }

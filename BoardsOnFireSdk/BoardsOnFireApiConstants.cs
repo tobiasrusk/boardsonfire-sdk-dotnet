@@ -4,7 +4,7 @@ internal static class BoardsOnFireApiConstants
     /// <summary>
     /// Base Uri to Boards on Fire API
     /// </summary>
-    internal static string BoardsOnFireApiBaseUri(string customerEndpoint, int apiVersion) => $"https://{customerEndpoint}.boardsonfirestaging.com/api/v{apiVersion}/";
+    internal static string BoardsOnFireApiBaseUri(string customerEndpoint, int apiVersion) => $"https://{customerEndpoint}.boardsonfireapp.com/api/v{apiVersion}/";
 
     /// <summary>
     /// Default API version

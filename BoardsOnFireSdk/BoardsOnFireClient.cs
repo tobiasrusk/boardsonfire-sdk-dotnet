@@ -1,4 +1,5 @@
 ﻿using BoardsOnFireSdk.Authorization;
+using BoardsOnFireSdk.Resources.DataSources;
 using BoardsOnFireSdk.Resources.Organizations;
 using BoardsOnFireSdk.Resources.Users;
 
@@ -8,6 +9,8 @@ public class BoardsOnFireClient
 {
     public Users Users { get; }
     public Organizations Organizations { get; }
+    public DataObjects DataObjects { get; }
+    public EntityObjects EntityObjects { get; }
 
     private BoardsOnFireClient(HttpClient httpClient, IBoardsOnFireAuthorization authorization, string customerEndpoint, int apiVersion)
     {
@@ -16,6 +19,8 @@ public class BoardsOnFireClient
 
         Users = new Users(httpClient);
         Organizations = new Organizations(httpClient);
+        DataObjects = new DataObjects(httpClient);
+        EntityObjects = new EntityObjects(httpClient);
     }
 
     /// <summary>

@@ -38,8 +38,8 @@ export BOF_CUSTOMER_ENDPOINT="zyx"
 
 Using Windows Terminal:
 ```cmd
-set BOF_API_KEY "xyz"
-set BOF_CUSTOMER_ENDPOINT "zyx"
+setx BOF_API_KEY "xyz"
+setx BOF_CUSTOMER_ENDPOINT "zyx"
 ```
 
 All resources are called from BoardsOnFireClient. Needed input for builder:

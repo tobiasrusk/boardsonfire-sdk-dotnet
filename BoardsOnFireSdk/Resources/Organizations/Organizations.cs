@@ -1,7 +1,7 @@
 ﻿using BoardsOnFireSdk.Enums;
 
 namespace BoardsOnFireSdk.Resources.Organizations;
-public class Organizations : BaseResource
+public class Organizations : BaseResource<OrganizationDto>
 {
     public Organizations(HttpClient httpClient) : base(httpClient, nameof(Organizations).ToLower())
     {
@@ -11,6 +11,11 @@ public class Organizations : BaseResource
     {
         var queryParams = new ListQueryParams(pageSize, page, direction, order);
 
-        return await base.ListAsync<OrganizationDto>(queryParams);
+        return await base.ListAsync(queryParams);
+    }
+
+    public override async Task<OrganizationDto?> GetByIdAsync(Guid id)
+    {
+        return await base.GetByIdAsync(id);
     }
 }
