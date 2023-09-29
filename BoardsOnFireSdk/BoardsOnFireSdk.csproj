@@ -6,8 +6,8 @@
     <Nullable>enable</Nullable>
 	<PackageId>BoardsOnFireSdk</PackageId>
 	<PackageIcon>bof_logo.png</PackageIcon>
-    <Version>1.0.0-alpha-001</Version>
-	<Description>Unofficial SDK package for Boards on Fire API. For more information visit repository on Github.</Description>
+    <Version>1.0.0-alpha-002</Version>
+	<Description>SDK package for Boards on Fire API.</Description>
 	<RepositoryUrl>https://github.com/tobiasrusk/boardsonfire-sdk-dotnet</RepositoryUrl>
 	<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
@@ -19,6 +19,7 @@
       <Pack>True</Pack>
       <PackagePath></PackagePath>
     </None>
+	<None Include="..\README.md" Pack="true" PackagePath="\"/>
   </ItemGroup>
 
 </Project>
