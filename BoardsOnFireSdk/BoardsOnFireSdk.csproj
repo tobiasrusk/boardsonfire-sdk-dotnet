@@ -6,6 +6,7 @@
     <Nullable>enable</Nullable>
 	<PackageId>BoardsOnFireSdk</PackageId>
 	<PackageIcon>bof_logo.png</PackageIcon>
+	<PackageReadmeFile>README.md</PackageReadmeFile>
     <Version>1.0.0-alpha-002</Version>
 	<Description>SDK package for Boards on Fire API.</Description>
 	<RepositoryUrl>https://github.com/tobiasrusk/boardsonfire-sdk-dotnet</RepositoryUrl>
