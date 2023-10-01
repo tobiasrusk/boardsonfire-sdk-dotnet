@@ -1,21 +1,25 @@
-﻿using System.Dynamic;
+﻿using BoardsOnFireSdk.Resources.EntityObjects;
 
 namespace BoardsOnFireSdk.Resources.DataSources;
-public class EntityObjects : BaseResource<ExpandoObject>
+
+/// <summary>
+/// Resource for list, get, create, update, import and delete entity objects
+/// </summary>
+public class EntityObjects : BaseResource<IEntityObjectDto>
 {
     public EntityObjects(HttpClient httpClient) : base(httpClient, nameof(EntityObjects).ToLower())
     {
     }
 
-    public new async Task<ExpandoObject?> GetByIdAsync(string entityName, Guid id)
+    public new async Task<TDynamicDto?> GetByIdAsync<TDynamicDto>(string entityName, Guid id) where TDynamicDto : IEntityObjectDto
     {
         var endpoint = base.EntityObjectsEndpoint(entityName);
-        return await base.GetByIdAsync(endpoint, id);
+        return await base.GetByIdAsync<TDynamicDto>(endpoint, id);
     }
 
-    public new async Task<List<ExpandoObject>> ListAsync(string entityName, ListQuery query)
+    public new async Task<List<TDynamicDto>> ListAsync<TDynamicDto>(string entityName, ListQuery query) where TDynamicDto : IEntityObjectDto
     {
         var endpoint = base.EntityObjectsEndpoint(entityName);
-        return await base.ListAsync(endpoint, query);
+        return await base.ListAsync<TDynamicDto>(endpoint, query);
     }
 }

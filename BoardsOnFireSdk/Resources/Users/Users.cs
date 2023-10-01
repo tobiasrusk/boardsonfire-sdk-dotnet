@@ -1,6 +1,10 @@
 ﻿using BoardsOnFireSdk.Enums;
 
 namespace BoardsOnFireSdk.Resources.Users;
+
+/// <summary>
+/// Resource for list and get users
+/// </summary>
 public class Users : BaseResource<UserDto>
 {
     public Users(HttpClient httpClient) : base(httpClient, nameof(Users).ToLower())

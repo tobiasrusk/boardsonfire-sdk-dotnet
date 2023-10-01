@@ -22,11 +22,11 @@ public abstract class BaseResource<TDto>
         return await BoardsOnFireApiResponseHandler.Handle<TDto>(response);
     }
 
-    protected async Task<TDto?> GetByIdAsync(string endpoint, Guid id)
+    protected async Task<TDynamicDto?> GetByIdAsync<TDynamicDto>(string endpoint, Guid id)
     {
         using var response = await HttpClient.GetAsync($"{endpoint}/{id}");
 
-        return await BoardsOnFireApiResponseHandler.Handle<TDto>(response);
+        return await BoardsOnFireApiResponseHandler.Handle<TDynamicDto>(response);
     }
 
     protected async Task<List<TDto>> ListAsync(ListQueryParams queryParams)
@@ -36,10 +36,10 @@ public abstract class BaseResource<TDto>
         return await BoardsOnFireApiResponseHandler.Handle<List<TDto>>(response) ?? new List<TDto>();
     }
 
-    protected async Task<List<TDto>> ListAsync(string endpoint, ListQuery query)
+    protected async Task<List<TDynamicDto>> ListAsync<TDynamicDto>(string endpoint, ListQuery query)
     {
         using var response = await HttpClient.PostAsJsonAsync($"{endpoint}/list", query, DefaultJsonSerializerOptions.Instance);
 
-        return await BoardsOnFireApiResponseHandler.Handle<List<TDto>>(response) ?? new List<TDto>();
+        return await BoardsOnFireApiResponseHandler.Handle<List<TDynamicDto>>(response) ?? new List<TDynamicDto>();
     }
 }

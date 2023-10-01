@@ -1,5 +1,6 @@
 ﻿using BoardsOnFireSdk;
 using BoardsOnFireSdk.Resources;
+using playground.Entities;
 
 Console.WriteLine("Lets Play!");
 
@@ -38,22 +39,18 @@ var user = await client.Users.GetByIdAsync(users[0].Id);
 Console.WriteLine($"First user LastName: {user!.LastName}");
 
 // DataObjects
-var dataObjects = await client.DataObjects.ListAsync("safety_cross", new ListQuery(50, 1, "comment asc", null, "comment, id, status", ""));
+var dataObjects = await client.DataObjects.ListAsync<SafetyCrossDataObjectDto>("safety_cross", new ListQuery(50, 1, "comment asc", null, "comment, id, status", ""));
 Console.WriteLine($"Fetched dataObjects count: {dataObjects.Count}");
 
-var dataObjectId = (string)((dynamic)dataObjects[0]).id;
-var dataObjectGuid = Guid.Parse(dataObjectId);
-var dataObject = await client.DataObjects.GetByIdAsync("safety_cross", dataObjectGuid);
-Console.WriteLine($"Fetched dataObject status: {((dynamic)dataObject!).status}");
+var dataObject = await client.DataObjects.GetByIdAsync<SafetyCrossDataObjectDto>("safety_cross", dataObjects[0].Id);
+Console.WriteLine($"Fetched dataObject status: {dataObject!.Status}");
 
 // EntityObjects
-var entityObjects = await client.EntityObjects.ListAsync("projekt_enty", new ListQuery(50, 1, "name asc", null, "name, id, status", ""));
+var entityObjects = await client.EntityObjects.ListAsync<ProjectEntityObjectDto>("projekt_enty", new ListQuery(50, 1, "name asc", null, "name, id, status", ""));
 Console.WriteLine($"Fetched entityObjects count: {dataObjects.Count}");
 
-var entityObjectId = (string)((dynamic)entityObjects[0]).id;
-var entityObjectGuid = Guid.Parse(entityObjectId);
-var entityObject = await client.EntityObjects.GetByIdAsync("projekt_enty", entityObjectGuid);
-Console.WriteLine($"Fetched entityObject name: {((dynamic)entityObject!).name}");
+var entityObject = await client.EntityObjects.GetByIdAsync<ProjectEntityObjectDto>("projekt_enty", entityObjects[0].Id);
+Console.WriteLine($"Fetched entityObject name: {entityObject!.Name}");
 
 Console.WriteLine("Press any key to exit");
 Console.ReadKey();

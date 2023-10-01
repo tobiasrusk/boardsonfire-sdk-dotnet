@@ -1,6 +1,10 @@
 ﻿using BoardsOnFireSdk.Enums;
 
 namespace BoardsOnFireSdk.Resources.Organizations;
+
+/// <summary>
+/// Resource for list and get organizations
+/// </summary>
 public class Organizations : BaseResource<OrganizationDto>
 {
     public Organizations(HttpClient httpClient) : base(httpClient, nameof(Organizations).ToLower())
