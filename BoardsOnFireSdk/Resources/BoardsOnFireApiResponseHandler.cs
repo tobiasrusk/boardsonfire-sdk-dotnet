@@ -24,4 +24,15 @@ public static class BoardsOnFireApiResponseHandler
         var content = await response.Content.ReadAsStringAsync();
         throw new BoardsOnFireApiException(response.StatusCode, "Unsuccessful request", content);
     }
+
+    public static async Task Handle(HttpResponseMessage response)
+    {
+        if (response.IsSuccessStatusCode)
+        {
+            return;
+        }
+
+        var content = await response.Content.ReadAsStringAsync();
+        throw new BoardsOnFireApiException(response.StatusCode, "Unsuccessful request", content);
+    }
 }

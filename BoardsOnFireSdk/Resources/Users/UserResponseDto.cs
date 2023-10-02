@@ -1,7 +1,7 @@
 ﻿using BoardsOnFireSdk.Enums;
 
 namespace BoardsOnFireSdk.Resources.Users;
-public class UserDto
+public class UserResponseDto
 {
     public Guid Id { get; set; }
     public string? Email { get; set; }

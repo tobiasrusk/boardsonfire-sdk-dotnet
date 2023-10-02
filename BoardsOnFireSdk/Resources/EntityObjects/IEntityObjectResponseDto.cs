@@ -3,7 +3,7 @@
 /// <summary>
 /// Default fields for entity object. Create implementation with your custom fields.
 /// </summary>
-public interface IEntityObjectDto
+public interface IEntityObjectResponseDto
 {
     public Guid Id { get; set; }
     public DateTime CreatedAt { get; set; }

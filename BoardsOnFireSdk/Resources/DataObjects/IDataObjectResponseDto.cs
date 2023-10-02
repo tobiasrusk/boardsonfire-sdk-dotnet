@@ -3,7 +3,7 @@
 /// <summary>
 /// Default fields for data object. Create implementation with your custom fields.
 /// </summary>
-public interface IDataObjectDto
+public interface IDataObjectResponseDto
 {
     public Guid Id { get; set; }
     public DateTime CreatedAt { get; set; }

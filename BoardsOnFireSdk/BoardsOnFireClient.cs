@@ -1,5 +1,6 @@
 ﻿using BoardsOnFireSdk.Authorization;
-using BoardsOnFireSdk.Resources.DataSources;
+using BoardsOnFireSdk.Resources.DataObjects;
+using BoardsOnFireSdk.Resources.EntityObjects;
 using BoardsOnFireSdk.Resources.Organizations;
 using BoardsOnFireSdk.Resources.Users;
 

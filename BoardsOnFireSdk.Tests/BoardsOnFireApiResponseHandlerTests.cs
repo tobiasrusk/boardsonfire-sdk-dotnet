@@ -20,7 +20,7 @@ public class BoardsOnFireApiResponseHandlerTests
             Content = content
         };
 
-        var exception = await Assert.ThrowsAsync<BoardsOnFireApiException>(async () => await BoardsOnFireApiResponseHandler.Handle<UserDto>(httpResponse));
+        var exception = await Assert.ThrowsAsync<BoardsOnFireApiException>(async () => await BoardsOnFireApiResponseHandler.Handle<UserResponseDto>(httpResponse));
 
         Assert.NotNull(exception);
         Assert.Equal(HttpStatusCode.NotFound, exception.StatusCode);
@@ -31,7 +31,7 @@ public class BoardsOnFireApiResponseHandlerTests
     [Fact]
     public async Task Handle_Successful_ThrowExceptionWithResponseData()
     {
-        var user = new UserDto
+        var user = new UserResponseDto
         {
             Id = Guid.NewGuid(),
             FirstName = "Test",
@@ -49,7 +49,7 @@ public class BoardsOnFireApiResponseHandlerTests
             Content = content
         };
 
-        var result = await BoardsOnFireApiResponseHandler.Handle<UserDto>(httpResponse);
+        var result = await BoardsOnFireApiResponseHandler.Handle<UserResponseDto>(httpResponse);
 
         Assert.NotNull(result);
         Assert.Equal(user.Id, result.Id);

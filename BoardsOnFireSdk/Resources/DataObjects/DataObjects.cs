@@ -1,25 +1,53 @@
-﻿using BoardsOnFireSdk.Resources.DataObjects;
-
-namespace BoardsOnFireSdk.Resources.DataSources;
+﻿namespace BoardsOnFireSdk.Resources.DataObjects;
 
 /// <summary>
 /// Resource for list, get, create, update, import and delete data objects
 /// </summary>
-public class DataObjects : BaseResource<IDataObjectDto>
+public class DataObjects : BaseBofObjectsResource
 {
-    public DataObjects(HttpClient httpClient) : base(httpClient, nameof(DataObjects).ToLower())
+    private static string Endpoint(string dataSourceName) => $"datasources/{dataSourceName}/dataobjects";
+
+    public DataObjects(HttpClient httpClient) : base(httpClient)
     {
     }
 
-    public new async Task<TDynamicDto?> GetByIdAsync<TDynamicDto>(string dataSourceName, Guid id) where TDynamicDto : IDataObjectDto
+    public new async Task<TResponseDto?> GetByIdAsync<TResponseDto>(string dataSourceName, Guid id) where TResponseDto : IDataObjectResponseDto
     {
-        var endpoint = base.DataObjectsEndpoint(dataSourceName);
-        return await base.GetByIdAsync<TDynamicDto>(endpoint, id);
+        var endpoint = Endpoint(dataSourceName);
+        return await base.GetByIdAsync<TResponseDto>(endpoint, id);
     }
 
-    public new async Task<List<TDynamicDto>> ListAsync<TDynamicDto>(string dataSourceName, ListQuery query) where TDynamicDto : IDataObjectDto
+    public new async Task<List<TResponseDto>> ListAsync<TResponseDto>(string dataSourceName, ListQuery query) where TResponseDto : IDataObjectResponseDto
     {
-        var endpoint = base.DataObjectsEndpoint(dataSourceName);
-        return await base.ListAsync<TDynamicDto>(endpoint, query);
+        var endpoint = Endpoint(dataSourceName);
+        return await base.ListAsync<TResponseDto>(endpoint, query);
+    }
+
+    public new async Task<TResponseDto?> CreateAsync<TRequestDto, TResponseDto>(string dataSourceName, TRequestDto requestDto)
+        where TResponseDto : IDataObjectResponseDto
+        where TRequestDto : IDataObjectRequestDto
+    {
+        var endpoint = Endpoint(dataSourceName);
+        return await base.CreateAsync<TRequestDto, TResponseDto>(endpoint, requestDto);
+    }
+
+    public new async Task<TResponseDto?> PatchAsync<TRequestDto, TResponseDto>(string dataSourceName, Guid id, TRequestDto requestDto)
+        where TResponseDto : IDataObjectResponseDto
+        where TRequestDto : IDataObjectRequestDto
+    {
+        var endpoint = Endpoint(dataSourceName);
+        return await base.PatchAsync<TRequestDto, TResponseDto>(endpoint, id, requestDto);
+    }
+
+    public new async Task<List<Guid>> ImportAsync<TRequestDto>(string dataSourceName, List<TRequestDto> requestDtos) where TRequestDto : IDataObjectRequestDto
+    {
+        var endpoint = Endpoint(dataSourceName);
+        return await base.ImportAsync(endpoint, requestDtos);
+    }
+
+    public new async Task DeleteAsync(string dataSourceName, Guid id)
+    {
+        var endpoint = Endpoint(dataSourceName);
+        await base.DeleteAsync(endpoint, id);
     }
 }

@@ -5,6 +5,11 @@ namespace playground.Entities;
 /// <summary>
 /// Example with default Project Entity from Boards on Fire
 /// </summary>
+public static class ProjectEntity
+{
+    public const string EntityName = "project_entity";
+}
+
 public class ProjectEntityFields
 {
     public float? Status { get; set; }
@@ -13,14 +18,15 @@ public class ProjectEntityFields
     public DateTime? StartDate { get; set; }
     public DateTime? EndDate { get; set; }
 }
-public class ProjectEntityObjectDto : ProjectEntityFields, IEntityObjectDto
+public class ProjectEntityObjectResponseDto : ProjectEntityFields, IEntityObjectResponseDto
 {
     public Guid Id { get; set; }
     public DateTime CreatedAt { get; set; }
     public DateTime UpdatedAt { get; set; }
 }
 
-public class SafetyCrossEntityObjectCreate : ProjectEntityFields, IEntityObjectCreate
+public class ProjectEntityObjectRequestDto : ProjectEntityFields, IEntityObjectRequestDto
 {
+    public Guid? Id { get; set; }
     public Guid OrganizationId { get; set; }
 }

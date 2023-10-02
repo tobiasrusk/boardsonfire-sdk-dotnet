@@ -5,11 +5,16 @@ namespace playground.Entities;
 /// <summary>
 /// Example with default Status Data Source from Boards on Fire
 /// </summary>
+
+public static class SafetyCrossDataSource
+{
+    public const string DataSourceName = "safety_cross";
+}
 public class SafetyCrossDataFields
 {
     public float? Status { get; set; }
 }
-public class SafetyCrossDataObjectDto : SafetyCrossDataFields, IDataObjectDto
+public class SafetyCrossDataObjectResponseDto : SafetyCrossDataFields, IDataObjectResponseDto
 {
     public Guid Id { get; set; }
     public DateTime CreatedAt { get; set; }
@@ -17,7 +22,7 @@ public class SafetyCrossDataObjectDto : SafetyCrossDataFields, IDataObjectDto
     public string? Comment { get; set; }
 }
 
-public class SafetyCrossDataObjectCreate : SafetyCrossDataFields, IDataObjectCreate
+public class SafetyCrossDataObjectRequestDto : SafetyCrossDataFields, IDataObjectRequestDto
 {
     public Guid OrganizationId { get; set; }
     public DateTime Timestamp { get; set; }

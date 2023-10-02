@@ -1,56 +1,29 @@
 ﻿using BoardsOnFireSdk;
-using BoardsOnFireSdk.Resources;
-using playground.Entities;
+using playground;
+using playground.RequestsSamples;
 
 Console.WriteLine("Lets Play!");
 
-var apiKey = Environment.GetEnvironmentVariable("BOF_API_KEY");
-var customerEndpoint = Environment.GetEnvironmentVariable("BOF_CUSTOMER_ENDPOINT");
-
-if (apiKey == null)
-{
-    throw new ArgumentException(nameof(apiKey));
-}
-
-if (customerEndpoint == null)
-{
-    throw new ArgumentException(nameof(customerEndpoint));
-}
+var playgroundArguments = ArgumentsHelper.GetArgumentsFromEnvironmentVariables();
 
 var clientBuilder = new BoardsOnFireClient.Builder();
 var client = clientBuilder
-    .WithApiKeyAuthorization(apiKey)
-    .WithCustomerEndpoint(customerEndpoint)
+    .WithApiKeyAuthorization(playgroundArguments.ApiKey)
+    .WithCustomerEndpoint(playgroundArguments.CustomerEndpoint)
     .SetUserAgent("Boards on Fire SDK Playground / 1.0")
     .Build();
 
 // Organizations
-var organizations = await client.Organizations.ListAsync();
-Console.WriteLine($"Fetched organizations count: {organizations.Count}");
-
-var organization = await client.Organizations.GetByIdAsync(organizations[0].Id);
-Console.WriteLine($"First organization name: {organization!.Name}");
+var firstOrganizationId = await OrganizationsRequests.RunAndReturnFirstOrganizationidAsync(client);
 
 // Users
-var users = await client.Users.ListAsync();
-Console.WriteLine($"Fetched users count: {users.Count}");
-
-var user = await client.Users.GetByIdAsync(users[0].Id);
-Console.WriteLine($"First user LastName: {user!.LastName}");
+await UsersRequests.RunAsync(client);
 
 // DataObjects
-var dataObjects = await client.DataObjects.ListAsync<SafetyCrossDataObjectDto>("safety_cross", new ListQuery(50, 1, "comment asc", null, "comment, id, status", ""));
-Console.WriteLine($"Fetched dataObjects count: {dataObjects.Count}");
-
-var dataObject = await client.DataObjects.GetByIdAsync<SafetyCrossDataObjectDto>("safety_cross", dataObjects[0].Id);
-Console.WriteLine($"Fetched dataObject status: {dataObject!.Status}");
+await DataObjectsRequests.RunAsync(client, firstOrganizationId);
 
 // EntityObjects
-var entityObjects = await client.EntityObjects.ListAsync<ProjectEntityObjectDto>("projekt_enty", new ListQuery(50, 1, "name asc", null, "name, id, status", ""));
-Console.WriteLine($"Fetched entityObjects count: {dataObjects.Count}");
-
-var entityObject = await client.EntityObjects.GetByIdAsync<ProjectEntityObjectDto>("projekt_enty", entityObjects[0].Id);
-Console.WriteLine($"Fetched entityObject name: {entityObject!.Name}");
+await EntityObjectsRequests.RunAsync(client, firstOrganizationId);
 
 Console.WriteLine("Press any key to exit");
 Console.ReadKey();

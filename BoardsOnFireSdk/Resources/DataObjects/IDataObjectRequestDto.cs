@@ -3,7 +3,7 @@
 /// <summary>
 /// Default fields for create data object. Create implementation with your custom fields.
 /// </summary>
-public interface IDataObjectCreate
+public interface IDataObjectRequestDto
 {
     public Guid OrganizationId { get; set; }
     public DateTime Timestamp { get; set; }
