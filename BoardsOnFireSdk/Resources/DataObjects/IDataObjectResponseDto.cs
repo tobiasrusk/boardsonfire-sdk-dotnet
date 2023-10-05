@@ -1,4 +1,6 @@
-﻿namespace BoardsOnFireSdk.Resources.DataObjects;
+﻿using BoardsOnFireSdk.Resources.Organizations;
+
+namespace BoardsOnFireSdk.Resources.DataObjects;
 
 /// <summary>
 /// Default fields for data object. Create implementation with your custom fields.
@@ -9,4 +11,5 @@ public interface IDataObjectResponseDto
     public DateTime CreatedAt { get; set; }
     public DateTime UpdatedAt { get; set; }
     public string? Comment { get; set; }
+    public OrganizationBaseResponseDto? Organization { get; set; }
 }

@@ -7,12 +7,6 @@ internal static class DataObjectsRequests
 {
     internal static async Task RunAsync(BoardsOnFireClient client, Guid organizationId)
     {
-        var dataObjects = await client.DataObjects.ListAsync<SafetyCrossDataObjectResponseDto>(SafetyCrossDataSource.DataSourceName, new ListQuery(50, 1, "comment asc", null, "comment, id, status", ""));
-        Console.WriteLine($"Fetched dataObjects count: {dataObjects.Count}");
-
-        var dataObject = await client.DataObjects.GetByIdAsync<SafetyCrossDataObjectResponseDto>(SafetyCrossDataSource.DataSourceName, dataObjects[0].Id);
-        Console.WriteLine($"Fetched dataObject status: {dataObject!.Status}");
-
         var dataRequestDto = new SafetyCrossDataObjectRequestDto
         {
             OrganizationId = organizationId,
@@ -21,6 +15,12 @@ internal static class DataObjectsRequests
         };
         var createdDataObject = await client.DataObjects.CreateAsync<SafetyCrossDataObjectRequestDto, SafetyCrossDataObjectResponseDto>(SafetyCrossDataSource.DataSourceName, dataRequestDto);
         Console.WriteLine($"Created dataObject status: {createdDataObject!.Status}");
+
+        var dataObjects = await client.DataObjects.ListAsync<SafetyCrossDataObjectResponseDto>(SafetyCrossDataSource.DataSourceName, new ListQuery(50, 1, "comment asc", null, "comment, id, status", ""));
+        Console.WriteLine($"Fetched dataObjects count: {dataObjects.Count}");
+
+        var dataObject = await client.DataObjects.GetByIdAsync<SafetyCrossDataObjectResponseDto>(SafetyCrossDataSource.DataSourceName, dataObjects[0].Id);
+        Console.WriteLine($"Fetched dataObject status: {dataObject!.Status}");
 
         dataRequestDto.Status = 20;
         var updatedDataObject = await client.DataObjects.PatchAsync<SafetyCrossDataObjectRequestDto, SafetyCrossDataObjectResponseDto>(SafetyCrossDataSource.DataSourceName, createdDataObject.Id, dataRequestDto);

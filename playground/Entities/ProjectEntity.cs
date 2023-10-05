@@ -23,10 +23,14 @@ public class ProjectEntityObjectResponseDto : ProjectEntityFields, IEntityObject
     public Guid Id { get; set; }
     public DateTime CreatedAt { get; set; }
     public DateTime UpdatedAt { get; set; }
+    public DateTime? ArchivedAt { get; set; }
+    public string? ExternalId { get; set; }
 }
 
 public class ProjectEntityObjectRequestDto : ProjectEntityFields, IEntityObjectRequestDto
 {
     public Guid? Id { get; set; }
     public Guid OrganizationId { get; set; }
+    public DateTime? ArchivedAt { get; set; }
+    public string? ExternalId { get; set; }
 }
