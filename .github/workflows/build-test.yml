@@ -11,6 +11,7 @@ on:
 
 jobs:
   build:
+    name: Build and Test
     env:
       BUILD_CONFIG: 'Release'
       SOLUTION: 'boardsonfire-sdk-dotnet.sln'
