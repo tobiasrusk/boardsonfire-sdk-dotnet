@@ -7,20 +7,21 @@ internal static class EntityObjectsRequests
 {
     internal static async Task RunAsync(BoardsOnFireClient client, Guid organizationId)
     {
-        var entityObjects = await client.EntityObjects.ListAsync<ProjectEntityObjectResponseDto>(ProjectEntity.EntityName, new ListQuery(50, 1, "name asc", null, "name, id, status", ""));
-        Console.WriteLine($"Fetched entityObjects count: {entityObjects.Count}");
-
-        var entityObject = await client.EntityObjects.GetByIdAsync<ProjectEntityObjectResponseDto>(ProjectEntity.EntityName, entityObjects[0].Id);
-        Console.WriteLine($"Fetched entityObject name: {entityObject!.Name}");
-
         var entityRequestDto = new ProjectEntityObjectRequestDto
         {
             OrganizationId = organizationId,
             Name = "test1",
             Status = 10
         };
+
         var createdEntityObject = await client.EntityObjects.CreateAsync<ProjectEntityObjectRequestDto, ProjectEntityObjectResponseDto>(ProjectEntity.EntityName, entityRequestDto);
         Console.WriteLine($"Created entityObject name: {createdEntityObject!.Name}");
+
+        var entityObjects = await client.EntityObjects.ListAsync<ProjectEntityObjectResponseDto>(ProjectEntity.EntityName, new ListQuery(50, 1, "name asc", null, "name, id, status", ""));
+        Console.WriteLine($"Fetched entityObjects count: {entityObjects.Count}");
+
+        var entityObject = await client.EntityObjects.GetByIdAsync<ProjectEntityObjectResponseDto>(ProjectEntity.EntityName, entityObjects[0].Id);
+        Console.WriteLine($"Fetched entityObject name: {entityObject!.Name}");
 
         entityRequestDto.Id = createdEntityObject.Id;
         entityRequestDto.Name = "test1_updated";

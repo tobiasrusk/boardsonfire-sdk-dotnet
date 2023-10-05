@@ -6,6 +6,9 @@ Console.WriteLine("Lets Play!");
 
 var playgroundArguments = ArgumentsHelper.GetArgumentsFromEnvironmentVariables();
 
+Console.WriteLine($"Customer Endpoint: '{playgroundArguments.CustomerEndpoint}'. Press any key to continue.");
+Console.ReadKey();
+
 var clientBuilder = new BoardsOnFireClient.Builder();
 var client = clientBuilder
     .WithApiKeyAuthorization(playgroundArguments.ApiKey)

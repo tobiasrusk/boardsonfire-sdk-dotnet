@@ -7,4 +7,6 @@ public interface IEntityObjectRequestDto
 {
     public Guid? Id { get; set; }
     public Guid OrganizationId { get; set; }
+    public DateTime? ArchivedAt { get; set; }
+    public string? ExternalId { get; set; }
 }
