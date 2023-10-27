@@ -1,4 +1,4 @@
-﻿namespace BoardsOnFireSdk.Resources.DataObjects;
+﻿namespace BoardsOnFireSdk.Resources.DataObjects.Dtos;
 
 /// <summary>
 /// Default fields for create data object. Create implementation with your custom fields.

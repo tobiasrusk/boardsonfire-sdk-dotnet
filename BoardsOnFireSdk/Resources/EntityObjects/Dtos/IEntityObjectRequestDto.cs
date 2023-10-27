@@ -1,4 +1,4 @@
-﻿namespace BoardsOnFireSdk.Resources.EntityObjects;
+﻿namespace BoardsOnFireSdk.Resources.EntityObjects.Dtos;
 
 /// <summary>
 /// Default fields for create entity object. Create implementation with your custom fields.
