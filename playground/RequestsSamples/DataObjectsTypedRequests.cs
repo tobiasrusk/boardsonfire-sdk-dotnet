@@ -14,7 +14,7 @@ internal static class DataObjectsTypedRequests
         var dataRequestDto = new SafetyCrossConcreteDataObjectRequestDto
         {
             OrganizationId = organizationId,
-            Timestamp = DateTime.UtcNow,
+            Timestamp = DateTime.UtcNow.AddDays(-1),
             Status = 10
         };
 

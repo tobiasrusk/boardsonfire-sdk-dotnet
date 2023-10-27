@@ -15,6 +15,7 @@ public class DynamicDataObjectResponseDto : IDataObjectResponseDto
         CreatedAt = responseDictionary.ParseDateTime(nameof(CreatedAt));
         UpdatedAt = responseDictionary.ParseDateTime(nameof(UpdatedAt));
         Organization = responseDictionary.ParseOrganization(nameof(Organization));
+        Comment = responseDictionary.ParseString(nameof(Comment));
 
         DataProperties = responseDictionary;
     }

@@ -7,7 +7,7 @@
 	<PackageId>BoardsOnFireSdk</PackageId>
 	<PackageIcon>bof_logo.png</PackageIcon>
 	<PackageReadmeFile>README.md</PackageReadmeFile>
-    <Version>1.1.0</Version>
+    <Version>1.1.1</Version>
 	<Description>SDK package for Boards on Fire API.</Description>
 	<RepositoryUrl>https://github.com/tobiasrusk/boardsonfire-sdk-dotnet</RepositoryUrl>
 	<GeneratePackageOnBuild>true</GeneratePackageOnBuild>

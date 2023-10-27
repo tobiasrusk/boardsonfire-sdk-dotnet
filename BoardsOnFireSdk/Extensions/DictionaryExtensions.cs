@@ -2,9 +2,9 @@
 using System.Text.Json.Nodes;
 
 namespace BoardsOnFireSdk.Extensions;
-internal static class DictionaryExtensions
+public static class DictionaryExtensions
 {
-    internal static Guid? ParseGuid(this Dictionary<string, object?> dictionary, string propertyName)
+    public static Guid? ParseGuid(this Dictionary<string, object?> dictionary, string propertyName)
     {
         var keyName = propertyName.ToSnakeCase();
 
@@ -22,7 +22,7 @@ internal static class DictionaryExtensions
         return null;
     }
 
-    internal static DateTime? ParseDateTime(this Dictionary<string, object?> dictionary, string propertyName)
+    public static DateTime? ParseDateTime(this Dictionary<string, object?> dictionary, string propertyName)
     {
         var keyName = propertyName.ToSnakeCase();
 
@@ -33,14 +33,14 @@ internal static class DictionaryExtensions
             var valueAsString = value?.ToString();
             if (valueAsString != null)
             {
-                return DateTime.Parse(valueAsString);
+                return DateTime.SpecifyKind(DateTime.Parse(valueAsString), DateTimeKind.Utc);
             }
         }
 
         return null;
     }
 
-    internal static OrganizationBaseResponseDto? ParseOrganization(this Dictionary<string, object?> dictionary, string propertyName)
+    public static OrganizationBaseResponseDto? ParseOrganization(this Dictionary<string, object?> dictionary, string propertyName)
     {
         var keyName = propertyName.ToSnakeCase();
 
@@ -64,7 +64,7 @@ internal static class DictionaryExtensions
         return null;
     }
 
-    internal static string? ParseString(this Dictionary<string, object?> dictionary, string propertyName)
+    public static string? ParseString(this Dictionary<string, object?> dictionary, string propertyName)
     {
         var keyName = propertyName.ToSnakeCase();
 
