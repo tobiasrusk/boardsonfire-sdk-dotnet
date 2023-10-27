@@ -15,7 +15,7 @@ internal static class DataObjectsDynamicRequests
         var dataRequestDto = new DynamicDataObjectRequestDto
         {
             OrganizationId = organizationId,
-            Timestamp = DateTime.UtcNow.AddDays(8)
+            Timestamp = DateTime.UtcNow.AddDays(-2),
         };
         dataRequestDto.DataProperties.Add("status", 10);
 

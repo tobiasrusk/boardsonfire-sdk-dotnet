@@ -27,11 +27,11 @@ try
 
     // DataObjects
     // await DataObjectsDynamicRequests.RunAsync(client, firstOrganizationId);
-    //await DataObjectsTypedRequests.RunAsync(client, firstOrganizationId);
+    // await DataObjectsTypedRequests.RunAsync(client, firstOrganizationId);
 
-    //// EntityObjects
-    //await EntityObjectsRequests.RunAsync(client, firstOrganizationId);
-    await EntityObjectsDynamicRequests.RunAsync(client, firstOrganizationId);
+    // EntityObjects
+    // await EntityObjectsTypedRequests.RunAsync(client, firstOrganizationId);
+    // await EntityObjectsDynamicRequests.RunAsync(client, firstOrganizationId);
 }
 catch (BoardsOnFireApiException bofException)
 {

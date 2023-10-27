@@ -1,4 +1,6 @@
-﻿namespace BoardsOnFireSdk.Resources.EntityObjects.Dtos;
+﻿using BoardsOnFireSdk.Resources.Organizations;
+
+namespace BoardsOnFireSdk.Resources.EntityObjects.Dtos;
 
 /// <summary>
 /// Default fields for entity object. Create implementation with your custom fields.
@@ -10,4 +12,5 @@ public interface IEntityObjectResponseDto
     public DateTime? UpdatedAt { get; set; }
     public DateTime? ArchivedAt { get; set; }
     public string? ExternalId { get; set; }
+    public OrganizationBaseResponseDto? Organization { get; set; }
 }
