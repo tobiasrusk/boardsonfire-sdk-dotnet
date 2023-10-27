@@ -5,8 +5,6 @@ Boards on Fire SDK is an asynchronous SDK for easily accessing and develop towar
 
 To be able to connect to Boards on Fire API you must be a customer to [Boards on Fire](https://boardsonfire.com).
 
-**Note**: Boards on Fire SDK is currently in beta and is not yet ready for use
-
 **Note**: Please note that Boards on Fire SDK is an **unofficial** and community driven SDK. Feel free to contribute.
 
 ## Installation
@@ -65,6 +63,9 @@ Console.WriteLine($"Fetched organizations count: {organizations.Count}");
 ```
 
 It is also possible to use its own HttpClient, to be able to configure it as you want.
+
+## Samples
+Samples can be found in project playground. It contains both samples with typed, and dynamic, data- and entity objects requests.
 
 ## License
 [MIT](https://github.com/tobiasrusk/boardsonfire-sdk-dotnet/blob/main/LICENSE)

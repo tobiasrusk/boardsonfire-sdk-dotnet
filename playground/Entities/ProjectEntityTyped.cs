@@ -1,11 +1,11 @@
-﻿using BoardsOnFireSdk.Resources.EntityObjects;
+﻿using BoardsOnFireSdk.Resources.EntityObjects.Dtos;
 
 namespace playground.Entities;
 
 /// <summary>
 /// Example with default Project Entity from Boards on Fire
 /// </summary>
-public static class ProjectEntity
+public static class ProjectEntityTyped
 {
     public const string EntityName = "project_entity";
 }
@@ -20,9 +20,9 @@ public class ProjectEntityFields
 }
 public class ProjectEntityObjectResponseDto : ProjectEntityFields, IEntityObjectResponseDto
 {
-    public Guid Id { get; set; }
-    public DateTime CreatedAt { get; set; }
-    public DateTime UpdatedAt { get; set; }
+    public Guid? Id { get; set; }
+    public DateTime? CreatedAt { get; set; }
+    public DateTime? UpdatedAt { get; set; }
     public DateTime? ArchivedAt { get; set; }
     public string? ExternalId { get; set; }
 }
@@ -33,4 +33,8 @@ public class ProjectEntityObjectRequestDto : ProjectEntityFields, IEntityObjectR
     public Guid OrganizationId { get; set; }
     public DateTime? ArchivedAt { get; set; }
     public string? ExternalId { get; set; }
+}
+
+public class ProjectEntityObjectImportRequestDto : EntityObjectImportRequestDto<ProjectEntityObjectRequestDto>
+{
 }
