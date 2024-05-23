@@ -51,7 +51,7 @@ var apiKey = Environment.GetEnvironmentVariable("BOF_API_KEY");
 var customerEndpoint = Environment.GetEnvironmentVariable("BOF_CUSTOMER_ENDPOINT");
 
 var clientBuilder = new BoardsOnFireClient.Builder();
-var client = clientBuilder.
+var client = clientBuilder
   .WithApiKeyAuthorization(apiKey)
   .WithCustomerEndpoint(customerEndpoint)
   .SetUserAgent("Boards on Fire SDK Playground / 1.0")
