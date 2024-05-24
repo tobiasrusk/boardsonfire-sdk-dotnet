@@ -1,5 +1,6 @@
 ﻿using BoardsOnFireSdk.Resources.EntityObjects.Dtos;
 using BoardsOnFireSdk.Resources.Organizations;
+using BoardsOnFireSdk.Resources.Users;
 
 namespace playground.Entities;
 
@@ -27,6 +28,7 @@ public class ProjectEntityObjectResponseDto : ProjectEntityFields, IEntityObject
     public DateTime? ArchivedAt { get; set; }
     public string? ExternalId { get; set; }
     public OrganizationBaseResponseDto? Organization { get; set; }
+    public UserCreatedByDto? BofCreatedBy { get; set; }
 }
 
 public class ProjectEntityObjectRequestDto : ProjectEntityFields, IEntityObjectRequestDto
