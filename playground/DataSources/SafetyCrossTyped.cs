@@ -1,5 +1,6 @@
 ﻿using BoardsOnFireSdk.Resources.DataObjects.Dtos;
 using BoardsOnFireSdk.Resources.Organizations;
+using BoardsOnFireSdk.Resources.Users;
 
 namespace playground.Entities;
 
@@ -24,6 +25,7 @@ public class SafetyCrossConcreteDataObjectResponseDto : SafetyCrossDataFields, I
     public DateTime? UpdatedAt { get; set; }
     public string? Comment { get; set; }
     public OrganizationBaseResponseDto? Organization { get; set; }
+    public UserCreatedByDto? BofCreatedBy { get; set; }
 }
 
 public class SafetyCrossConcreteDataObjectRequestDto : SafetyCrossDataFields, IDataObjectRequestDto
