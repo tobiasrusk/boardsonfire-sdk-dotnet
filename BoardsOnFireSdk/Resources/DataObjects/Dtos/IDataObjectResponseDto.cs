@@ -1,4 +1,5 @@
 ﻿using BoardsOnFireSdk.Resources.Organizations;
+using BoardsOnFireSdk.Resources.Users;
 
 namespace BoardsOnFireSdk.Resources.DataObjects.Dtos;
 
@@ -12,4 +13,5 @@ public interface IDataObjectResponseDto
     public DateTime? UpdatedAt { get; set; }
     public string? Comment { get; set; }
     public OrganizationBaseResponseDto? Organization { get; set; }
+    public UserCreatedByDto? BofCreatedBy { get; set; }
 }

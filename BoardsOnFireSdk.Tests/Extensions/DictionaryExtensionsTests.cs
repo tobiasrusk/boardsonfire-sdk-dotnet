@@ -123,4 +123,52 @@ public class DictionaryExtensionsTests
         Assert.Null(actual);
         Assert.True(dictionary.ContainsKey("external_id"));
     }
+
+    [Fact]
+    public void ParseCreatedBy_ReturnUserCreatedByDto()
+    {
+        var userId = Guid.NewGuid().ToString();
+        var firstName = "John";
+        var lastName = "Doe";
+        var email = "john.doe@boardsonfiresdotnetdk.com";
+        var dictionary = new Dictionary<string, object?>
+        {
+            { "created_by", new JsonObject
+                {
+                    { "id", userId },
+                    { "first_name", firstName },
+                    { "last_name", lastName },
+                    { "email",  email }
+                }
+            }
+        };
+
+        var actual = dictionary.ParseCreatedBy("CreatedBy");
+        Assert.NotNull(actual);
+        Assert.Equal(userId, actual.Id.ToString());
+        Assert.Equal(firstName, actual.FirstName);
+        Assert.Equal(lastName, actual.LastName);
+        Assert.Equal(email, actual.Email);
+        Assert.Null(actual.AvatarColor);
+    }
+
+    [Fact]
+    public void ParseCreatedBy_ReturnNull()
+    {
+        var userId = Guid.NewGuid().ToString();
+        var userName = "John Doe";
+        var dictionary = new Dictionary<string, object?>
+        {
+            { "created_by", new JsonObject
+            {
+                    { "id", userId },
+                    { "name", userName }
+                }
+            }
+        };
+
+        var actual = dictionary.ParseCreatedBy("UpdatedBy");
+        Assert.Null(actual);
+        Assert.True(dictionary.ContainsKey("created_by"));
+    }
 }
