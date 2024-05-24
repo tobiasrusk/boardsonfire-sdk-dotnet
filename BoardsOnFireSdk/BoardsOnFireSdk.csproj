@@ -1,26 +1,24 @@
 <Project Sdk="Microsoft.NET.Sdk">
-
   <PropertyGroup>
-    <TargetFramework>net7.0</TargetFramework>
+    <TargetFramework>net8.0</TargetFramework>
     <ImplicitUsings>enable</ImplicitUsings>
     <Nullable>enable</Nullable>
-	<PackageId>BoardsOnFireSdk</PackageId>
-	<PackageIcon>bof_logo.png</PackageIcon>
-	<PackageReadmeFile>README.md</PackageReadmeFile>
+    <PackageId>BoardsOnFireSdk</PackageId>
+    <PackageIcon>bof_logo.png</PackageIcon>
+    <PackageReadmeFile>README.md</PackageReadmeFile>
     <Version>1.1.1</Version>
-	<Description>SDK package for Boards on Fire API.</Description>
-	<RepositoryUrl>https://github.com/tobiasrusk/boardsonfire-sdk-dotnet</RepositoryUrl>
-	<GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+    <Description>SDK package for Boards on Fire API.</Description>
+    <RepositoryUrl>https://github.com/tobiasrusk/boardsonfire-sdk-dotnet</RepositoryUrl>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
     <PackageLicenseExpression>MIT</PackageLicenseExpression>
     <PackageProjectUrl>https://github.com/tobiasrusk/boardsonfire-sdk-dotnet</PackageProjectUrl>
   </PropertyGroup>
-  
   <ItemGroup>
     <None Include="..\Assets\bof_logo.png">
       <Pack>True</Pack>
-      <PackagePath></PackagePath>
+      <PackagePath>
+      </PackagePath>
     </None>
-	<None Include="..\README.md" Pack="true" PackagePath="\" />
+    <None Include="..\README.md" Pack="true" PackagePath="\" />
   </ItemGroup>
-
 </Project>
