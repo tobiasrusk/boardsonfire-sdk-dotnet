@@ -1,5 +1,6 @@
 ﻿using BoardsOnFireSdk.Extensions;
 using BoardsOnFireSdk.Resources.Organizations;
+using BoardsOnFireSdk.Resources.Users;
 
 namespace BoardsOnFireSdk.Resources.DataObjects.Dtos.Dynamic;
 
@@ -16,6 +17,7 @@ public class DynamicDataObjectResponseDto : IDataObjectResponseDto
         UpdatedAt = responseDictionary.ParseDateTime(nameof(UpdatedAt));
         Organization = responseDictionary.ParseOrganization(nameof(Organization));
         Comment = responseDictionary.ParseString(nameof(Comment));
+        BofCreatedBy = responseDictionary.ParseCreatedBy(nameof(BofCreatedBy));
 
         DataProperties = responseDictionary;
     }
@@ -26,4 +28,5 @@ public class DynamicDataObjectResponseDto : IDataObjectResponseDto
     public string? Comment { get; set; }
     public OrganizationBaseResponseDto? Organization { get; set; }
     public Dictionary<string, object?> DataProperties { get; set; }
+    public UserCreatedByDto? BofCreatedBy { get; set; } // Internal property which user created object
 }

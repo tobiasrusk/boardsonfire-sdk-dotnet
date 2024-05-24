@@ -1,4 +1,5 @@
 ﻿using BoardsOnFireSdk.Resources.Organizations;
+using BoardsOnFireSdk.Resources.Users;
 
 namespace BoardsOnFireSdk.Resources.EntityObjects.Dtos;
 
@@ -13,4 +14,5 @@ public interface IEntityObjectResponseDto
     public DateTime? ArchivedAt { get; set; }
     public string? ExternalId { get; set; }
     public OrganizationBaseResponseDto? Organization { get; set; }
+    public UserCreatedByDto? BofCreatedBy { get; set; }
 }

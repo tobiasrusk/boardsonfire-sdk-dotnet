@@ -1,5 +1,6 @@
 ﻿using BoardsOnFireSdk.Extensions;
 using BoardsOnFireSdk.Resources.Organizations;
+using BoardsOnFireSdk.Resources.Users;
 
 namespace BoardsOnFireSdk.Resources.EntityObjects.Dtos.Dynamic;
 
@@ -17,6 +18,7 @@ public class DynamicEntityObjectResponseDto : IEntityObjectResponseDto
         ArchivedAt = responseDictionary.ParseDateTime(nameof(ArchivedAt));
         ExternalId = responseDictionary.ParseString(nameof(ExternalId));
         Organization = responseDictionary.ParseOrganization(nameof(Organization));
+        BofCreatedBy = responseDictionary.ParseCreatedBy(nameof(BofCreatedBy));
 
         DataProperties = responseDictionary;
     }
@@ -28,4 +30,5 @@ public class DynamicEntityObjectResponseDto : IEntityObjectResponseDto
     public string? ExternalId { get; set; }
     public OrganizationBaseResponseDto? Organization { get; set; }
     public Dictionary<string, object?> DataProperties { get; set; }
+    public UserCreatedByDto? BofCreatedBy { get; set; }
 }
